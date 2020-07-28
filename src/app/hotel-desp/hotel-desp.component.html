@@ -1,0 +1,125 @@
+<div class="container drop-shadow">
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="{{hotelDescription.image}}" alt="..." height="600px" width="500px">
+      </div>
+      <div class="col-lg-6">
+        <div class="row mt-4">
+          <div class="col-lg-12">
+            <h2 align="center">{{hotelDescription.title}}</h2>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-lg-12">
+            <p><b>Place Type: </b>{{hotelDescription.city}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <p><b>Price for single room per person: </b>₹{{hotelDescription.singleRoom}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <p><b>Price for double room 2 per person: </b>₹{{hotelDescription.doubleRoom}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <p><b>Number Of Days: </b>{{noOfDays}}</p>
+          </div>
+        </div>
+        <form [formGroup]="form" (submit)="calculate()">
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- <input type="checkbox" id="singleRoom" class="inputUncheck" name="singleRoom" value="singleRoom" [ngModel]="singleRoom" #singleRoom = "ngModel"> -->
+              <p><b>Single Room (Maximum one person in a room)</b></p>
+              <div>
+                <input class="form-control border-0 mb-1" type="number" formControlName="single_room_people" placeholder="Enter number of people" >
+                <input class="form-control border-0 " type="number" formControlName="single_room" placeholder="Enter number of rooms">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- <input class="form-control border-left-0" class="inputUncheck" type="checkbox" id="doubleRoom" name="doubleRoom" value="doubleRoom" [ngModel]="doubleRoom" #doubleRoom = "ngModel"> -->
+              <p><b>Double Room (Maximum two person in a room)</b></p>
+              <div>
+                <input class="form-control border-0 " type="number" formControlName="double_room_people" placeholder="Enter number of people">
+                <input class="form-control border-0 " type="number" formControlName="double_room" placeholder="Enter number of rooms">
+              </div>
+            </div>
+          </div>
+       
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <p><b>Tour Package selected: </b>{{placeDescription.title}}</p>
+            <p><b>Tour Package Amount: </b>{{tour_amount}}</p>
+          </div>
+        </div>
+        
+        <div class="row" align="center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              CLICK HERE
+            </button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+  <!--Modal-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payable Amount</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Total single room amount: ₹{{total_single_room_amount}}</p>
+          <p>Total double room amount: ₹{{total_double_room_amount}}</p>
+          <h6><b>Overall Amount: {{overall_amount}}</b></h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" (click)="mailorder()" data-target="#exampleModal2">CONFIRM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--modal 2-->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Order Placed Successfully</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>Thank you so much for planning your tour with us.</h3>
+          <h5>We wish you a happy and safe journey!!!</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goToLogin()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

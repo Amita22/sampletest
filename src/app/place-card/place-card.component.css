@@ -1,0 +1,10 @@
+img{
+    width: 250px !important;
+    height: 250px !important;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+   }
+

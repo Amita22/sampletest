@@ -1,0 +1,163 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h2 class="ml-5">TravelBuzz</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active hidden">
+          <h5 style="margin-left:20px; color: cornsilk; margin-top:10px ;display: none">Hi, {{name}}</h5>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" style="margin-left: 750px;">
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Select Amount</button>
+        </li>
+        <li class="nav-item active ml-3">
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal1">Select Season</button>
+        </li>
+        <li class="nav-item active ml-3">
+          <button type="button" class="btn btn-info" (click)="chat()">Chat With Us</button>
+        </li>
+        <li class="nav-item active ml-3">
+          <button type="button" class="btn btn-info" (click)="Feedback()">Feedback</button>
+        </li>
+        <li class="nav-item active ml-3">
+          <button type="button" class="btn btn-outline-danger">Log Out</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<div class="container bg-white rounded mb-5" id="div1" style="margin-top:4px; margin-left:389px" *ngFor="let i of Object.keys(placeDisplay)">
+    <div class=" card border-0" style=" margin-top:15px">
+        <!-- <div class="row"> -->
+                <div class="d-flex flex-row align-items-center ">
+                    <img class="rounded" style="margin-top: 20px;" src="{{placeDisplay[i].image}}" alt="card image cap" height="200px" width="200px" >
+                    <div class="d-flex flex-column align-items-center" style="margin-left: 200px;">
+                      <h2 class="card-title">{{placeDisplay[i].title}}</h2>
+                        <h5 class="card-text">{{placeDisplay[i].season}}</h5>
+                        <h5 class="card-text">{{placeDisplay[i].placeType}}</h5>
+                        <h5 class="card-text" style="color: midnightblue; font-weight: 750;">₹{{placeDisplay[i].amount}}</h5>
+                        <button type="button" class="btn" (click)="goToDesp(placeDisplay[i])" style="background-color: #fb641b;">View Details</button>
+                    </div>
+                </div> 
+    <!-- </div> -->
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Amount</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control " placeholder="Amount" name="amount" required ngModel #amount="ngModel">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="price(amount)">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- Modal 1 -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Season</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12 d-flex flex-column align-items-center">
+                <ul class="check-up">
+                    <li align="center" class="mb-1">
+                        <label>Spring
+                            <input type="checkbox" value="Spring" name="Spring" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li align="center" class="mb-1">
+                        <label>Summer
+                            <input type="checkbox" value="Summer" name="Summer" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li align="center">
+                        <label>Monsoon
+                            <input type="checkbox" value="Monsoon" name="Monsoon" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li align="center">
+                        <label>Pre-winter
+                            <input type="checkbox" value="Pre-winter" name="Pre-winter" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li align="center">
+                        <label>Winter
+                            <input type="checkbox" value="Winter" name="Winter" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li align="center">
+                        <label>Autumn
+                            <input type="checkbox" value="Autumn" name="Autumn" (click)="season($event)">
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="SelectedSeason()">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--Modal 2-->
+  <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Place Description</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div #mapContainer id="map"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="price(amount)">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>   -->

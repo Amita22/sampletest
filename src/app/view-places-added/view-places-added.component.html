@@ -1,0 +1,14 @@
+<p align="center" class="mt-5"><b>preferences added are:</b></p>
+<div align="center" class="container-fluid shadow p-2 bg-white rounded" style=" margin-left: 700px" *ngFor="let i of productDisplay">
+
+    
+    <div class="container-fluid card border-0" style=" margin-top:5px">
+        <div class="row">
+            <div class="col-2" *ngFor="let j of i.ProductSchema">
+                <div class="d-flex flex-column align-items-center ">
+                    <h6 class="card-title">{{j.title}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
